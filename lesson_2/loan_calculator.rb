@@ -63,10 +63,14 @@ loop do
   month_loan_duration = (year_loan_duration.to_i * 12)
 
   # Calculate monthly payment and truncate to 2 decimal values
-  monthly_payment = loan_amount * (monthly_interest_rate / (1 - (1 + monthly_interest_rate)**(-month_loan_duration)))
+  monthly_payment = loan_amount * (monthly_interest_rate /
+                    (1 - (1 + monthly_interest_rate)**(-month_loan_duration)))
   monthly_payment = monthly_payment.truncate(2)
 
-  prompt("The monthly payment is $#{monthly_payment} for a $#{loan_amount_with_commas} loan with a #{yearly_interest_rate}% interest rate and term of #{year_loan_duration} years.")
+  prompt("The monthly payment is $#{monthly_payment}")
+  prompt("for a $#{loan_amount_with_commas} loan")
+  prompt("with a #{yearly_interest_rate}% interest rate")
+  prompt("and term of #{year_loan_duration} years.")
 
   prompt('Calculate another loan payment?')
   answer = gets.chomp
